@@ -1,7 +1,7 @@
 FROM ich777/debian-baseimage
 
-LABEL org.opencontainers.image.authors="admin@minenet.at"
-LABEL org.opencontainers.image.source="https://github.com/ich777/docker-fivem-server"
+LABEL org.opencontainers.image.authors="contact@justyenzo.be"
+LABEL org.opencontainers.image.source="https://github.com/Just-Yenzo/docker-fivem-server"
 
 RUN apt-get update && \
 	apt-get -y install --no-install-recommends xz-utils unzip screen && \
@@ -13,17 +13,6 @@ RUN wget -O /tmp/gotty.tar.gz https://github.com/yudai/gotty/releases/download/v
 
 ENV DATA_DIR="/serverdata"
 ENV SERVER_DIR="${DATA_DIR}/serverfiles"
-ENV GAME_CONFIG=""
-ENV SRV_ADR="https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/"
-ENV MANUAL_UPDATES=""
-ENV ENABLE_WEBCONSOLE="true"
-ENV GOTTY_PARAMS="-w --title-format FiveM"
-ENV UMASK=000
-ENV UID=99
-ENV GID=100
-ENV SERVER_KEY="template"
-ENV START_VARS=""
-ENV DATA_PERM=770
 ENV USER="fivem"
 
 RUN mkdir $DATA_DIR && \
@@ -35,5 +24,6 @@ RUN mkdir $DATA_DIR && \
 ADD /scripts/ /opt/scripts/
 RUN chmod -R 770 /opt/scripts/
 
+VOLUME ["/serverdata"]
 #Server Start
 ENTRYPOINT ["/opt/scripts/start.sh"]
