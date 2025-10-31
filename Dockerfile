@@ -14,7 +14,8 @@ RUN wget -O /tmp/gotty.tar.gz https://github.com/yudai/gotty/releases/download/v
     rm -rf /tmp/gotty.tar.gz
 
 # --- Variables d’environnement ---
-ENV SERVER_DIR="/serverdata"
+ENV DATA_DIR="/serverdata"
+ENV SERVER_DIR="${DATA_DIR}"
 ENV USER="fivem"
 
 # --- Création de l’utilisateur et des dossiers ---
