@@ -11,10 +11,6 @@ RUN wget -O /tmp/gotty.tar.gz https://github.com/yudai/gotty/releases/download/v
 	tar -C /usr/bin/ -xvf /tmp/gotty.tar.gz && \
 	rm -rf /tmp/gotty.tar.gz
 
-ENV DATA_DIR="/serverdata"
-ENV SERVER_DIR="${DATA_DIR}/serverfiles"
-ENV USER="fivem"
-
 RUN mkdir $DATA_DIR && \
 	mkdir $SERVER_DIR && \
 	useradd -d $SERVER_DIR -s /bin/bash $USER && \
